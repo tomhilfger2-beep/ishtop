@@ -509,3 +509,14 @@ tab('in'); applyLang();
 { const h = location.hash.slice(1); if (['home', 'jobs', 'companies', 'test', 'saved', 'apps', 'profile', 'cv', 'auth'].includes(h)) go(h); else go('home'); }
 tick(); setInterval(tick, 5000);
 window.addEventListener('load', () => setTimeout(() => $('#loader').classList.add('off'), 600));
+
+/* ---------- Hero video ---------- */
+{
+    const v = $('#hv'), h = $('.hero');
+    if (v && h) {
+        const ok = () => { v.classList.add('ok'); h.classList.add('vid'); };
+        v.addEventListener('loadeddata', ok); if (v.readyState >= 2) ok();
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) v.pause();
+        else { const p = v.play(); if (p && p.catch) p.catch(() => { }); }
+    }
+}
